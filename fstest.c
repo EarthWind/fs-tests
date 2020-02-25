@@ -105,17 +105,17 @@ static struct syscall_desc syscalls[] = {
 	{ "rename", ACTION_RENAME, { TYPE_STRING, TYPE_STRING, TYPE_NONE } },
 	{ "mkfifo", ACTION_MKFIFO, { TYPE_STRING, TYPE_NUMBER, TYPE_NONE } },
 	{ "chmod", ACTION_CHMOD, { TYPE_STRING, TYPE_NUMBER, TYPE_NONE } },
-#ifdef HAS_LCHMOD
+	#ifdef HAS_LCHMOD
 	{ "lchmod", ACTION_LCHMOD, { TYPE_STRING, TYPE_NUMBER, TYPE_NONE } },
-#endif
+	#endif
 	{ "chown", ACTION_CHOWN, { TYPE_STRING, TYPE_NUMBER, TYPE_NUMBER, TYPE_NONE } },
 	{ "lchown", ACTION_LCHOWN, { TYPE_STRING, TYPE_NUMBER, TYPE_NUMBER, TYPE_NONE } },
-#ifdef HAS_CHFLAGS
+	#ifdef HAS_CHFLAGS
 	{ "chflags", ACTION_CHFLAGS, { TYPE_STRING, TYPE_STRING, TYPE_NONE } },
-#endif
-#ifdef HAS_LCHFLAGS
+	#endif
+	#ifdef HAS_LCHFLAGS
 	{ "lchflags", ACTION_LCHFLAGS, { TYPE_STRING, TYPE_STRING, TYPE_NONE } },
-#endif
+	#endif
 	{ "truncate", ACTION_TRUNCATE, { TYPE_STRING, TYPE_NUMBER, TYPE_NONE } },
 	{ "stat", ACTION_STAT, { TYPE_STRING, TYPE_STRING, TYPE_NONE } },
 	{ "lstat", ACTION_LSTAT, { TYPE_STRING, TYPE_STRING, TYPE_NONE } },
@@ -128,102 +128,63 @@ struct flag {
 };
 
 static struct flag open_flags[] = {
-#ifdef O_RDONLY
+	#ifdef O_RDONLY
 	{ O_RDONLY, "O_RDONLY" },
-#endif
-#ifdef O_WRONLY
+	#endif
+	#ifdef O_WRONLY
 	{ O_WRONLY, "O_WRONLY" },
-#endif
-#ifdef O_RDWR
+	#endif
+	#ifdef O_RDWR
 	{ O_RDWR, "O_RDWR" },
-#endif
-#ifdef O_NONBLOCK
+	#endif
+	#ifdef O_NONBLOCK
 	{ O_NONBLOCK, "O_NONBLOCK" },
-#endif
-#ifdef O_APPEND
+	#endif
+	#ifdef O_APPEND
 	{ O_APPEND, "O_APPEND" },
-#endif
-#ifdef O_CREAT
+	#endif
+	#ifdef O_CREAT
 	{ O_CREAT, "O_CREAT" },
-#endif
-#ifdef O_TRUNC
+	#endif
+	#ifdef O_TRUNC
 	{ O_TRUNC, "O_TRUNC" },
-#endif
-#ifdef O_EXCL
+	#endif
+	#ifdef O_EXCL
 	{ O_EXCL, "O_EXCL" },
-#endif
-#ifdef O_SHLOCK
+	#endif
+	#ifdef O_SHLOCK
 	{ O_SHLOCK, "O_SHLOCK" },
-#endif
-#ifdef O_EXLOCK
+	#endif
+	#ifdef O_EXLOCK
 	{ O_EXLOCK, "O_EXLOCK" },
-#endif
-#ifdef O_DIRECT
+	#endif
+	#ifdef O_DIRECT
 	{ O_DIRECT, "O_DIRECT" },
-#endif
-#ifdef O_FSYNC
+	#endif
+	#ifdef O_FSYNC
 	{ O_FSYNC, "O_FSYNC" },
-#endif
-#ifdef O_SYNC
+	#endif
+	#ifdef O_SYNC
 	{ O_SYNC, "O_SYNC" },
-#endif
-#ifdef O_NOFOLLOW
+	#endif
+	#ifdef O_NOFOLLOW
 	{ O_NOFOLLOW, "O_NOFOLLOW" },
-#endif
-#ifdef O_NOCTTY
+	#endif
+	#ifdef O_NOCTTY
 	{ O_NOCTTY, "O_NOCTTY" },
-#endif
+	#endif
 	{ 0, NULL }
 };
-
-#ifdef HAS_CHFLAGS
-static struct flag chflags_flags[] = {
-#ifdef UF_NODUMP
-	{ UF_NODUMP, "UF_NODUMP" },
-#endif
-#ifdef UF_IMMUTABLE
-	{ UF_IMMUTABLE, "UF_IMMUTABLE" },
-#endif
-#ifdef UF_APPEND
-	{ UF_APPEND, "UF_APPEND" },
-#endif
-#ifdef UF_NOUNLINK
-	{ UF_NOUNLINK, "UF_NOUNLINK" },
-#endif
-#ifdef UF_OPAQUE
-	{ UF_OPAQUE, "UF_OPAQUE" },
-#endif
-#ifdef SF_ARCHIVED
-	{ SF_ARCHIVED, "SF_ARCHIVED" },
-#endif
-#ifdef SF_IMMUTABLE
-	{ SF_IMMUTABLE, "SF_IMMUTABLE" },
-#endif
-#ifdef SF_APPEND
-	{ SF_APPEND, "SF_APPEND" },
-#endif
-#ifdef SF_NOUNLINK
-	{ SF_NOUNLINK, "SF_NOUNLINK" },
-#endif
-#ifdef SF_SNAPSHOT
-	{ SF_SNAPSHOT, "SF_SNAPSHOT" },
-#endif
-	{ 0, NULL }
-};
-#endif
 
 static const char *err2str(int error);
 
-static void
-usage(void)
+static void usage(void)
 {
-
 	fprintf(stderr, "usage: fstest [-u uid] [-g gid1[,gid2[...]]] syscall args ...\n");
 	exit(1);
 }
 
-static long long
-str2flags(struct flag *tflags, char *sflags)
+static long long str2flags(struct flag *tflags, char *sflags)
 {
 	long long flags = 0;
 	unsigned int i;
@@ -246,29 +207,7 @@ str2flags(struct flag *tflags, char *sflags)
 	return (flags);
 }
 
-#ifdef HAS_CHFLAGS
-static char *
-flags2str(struct flag *tflags, long long flags)
-{
-	static char sflags[1024];
-	unsigned int i;
-
-	sflags[0] = '\0';
-	for (i = 0; tflags[i].f_str != NULL; i++) {
-		if (flags & tflags[i].f_flag) {
-			if (sflags[0] != '\0')
-				strlcat(sflags, ",", sizeof(sflags));
-			strlcat(sflags, tflags[i].f_str, sizeof(sflags));
-		}
-	}
-	if (sflags[0] == '\0')
-		strlcpy(sflags, "none", sizeof(sflags));
-	return (sflags);
-}
-#endif
-
-static struct syscall_desc *
-find_syscall(const char *name)
+static struct syscall_desc *find_syscall(const char *name)
 {
 	int i;
 
@@ -279,10 +218,8 @@ find_syscall(const char *name)
 	return (NULL);
 }
 
-static void
-show_stat(struct stat64 *sp, const char *what)
+static void show_stat(struct stat64 *sp, const char *what)
 {
-
 	if (strcmp(what, "mode") == 0)
 		printf("0%o", (unsigned int)(sp->st_mode & ALLPERMS));
 	else if (strcmp(what, "inode") == 0)
@@ -303,10 +240,6 @@ show_stat(struct stat64 *sp, const char *what)
 		printf("%lld", (long long)sp->st_mtime);
 	else if (strcmp(what, "ctime") == 0)
 		printf("%lld", (long long)sp->st_ctime);
-#ifdef HAS_CHFLAGS
-	else if (strcmp(what, "flags") == 0)
-		printf("%s", flags2str(chflags_flags, sp->st_flags));
-#endif
 	else if (strcmp(what, "type") == 0) {
 		switch (sp->st_mode & S_IFMT) {
 		case S_IFIFO:
@@ -339,8 +272,7 @@ show_stat(struct stat64 *sp, const char *what)
 	}
 }
 
-static void
-show_stats(struct stat64 *sp, char *what)
+static void show_stats(struct stat64 *sp, char *what)
 {
 	const char *s = "";
 	char *w;
@@ -353,8 +285,7 @@ show_stats(struct stat64 *sp, char *what)
 	printf("\n");
 }
 
-static unsigned int
-call_syscall(struct syscall_desc *scall, char *argv[])
+static unsigned int call_syscall(struct syscall_desc *scall, char *argv[])
 {
 	struct stat64 sb;
 	long long flags;
@@ -398,11 +329,12 @@ call_syscall(struct syscall_desc *scall, char *argv[])
 			}
 		}
 	}
+
 	/*
 	 * Call the given syscall.
 	 */
-#define	NUM(n)	(args[(n)].num)
-#define	STR(n)	(args[(n)].str)
+	#define	NUM(n)	(args[(n)].num)
+	#define	STR(n)	(args[(n)].str)
 	switch (scall->sd_action) {
 	case ACTION_OPEN:
 		flags = str2flags(open_flags, STR(1));
@@ -449,27 +381,17 @@ call_syscall(struct syscall_desc *scall, char *argv[])
 	case ACTION_CHMOD:
 		rval = chmod(STR(0), NUM(1));
 		break;
-#ifdef HAS_LCHMOD
+	#ifdef HAS_LCHMOD
 	case ACTION_LCHMOD:
 		rval = lchmod(STR(0), NUM(1));
 		break;
-#endif
+	#endif
 	case ACTION_CHOWN:
 		rval = chown(STR(0), NUM(1), NUM(2));
 		break;
 	case ACTION_LCHOWN:
 		rval = lchown(STR(0), NUM(1), NUM(2));
 		break;
-#ifdef HAS_CHFLAGS
-	case ACTION_CHFLAGS:
-		rval = chflags(STR(0), str2flags(chflags_flags, STR(1)));
-		break;
-#endif
-#ifdef HAS_LCHFLAGS
-	case ACTION_LCHFLAGS:
-		rval = lchflags(STR(0), str2flags(chflags_flags, STR(1)));
-		break;
-#endif
 	case ACTION_TRUNCATE:
 		rval = truncate64(STR(0), NUM(1));
 		break;
@@ -505,8 +427,7 @@ call_syscall(struct syscall_desc *scall, char *argv[])
 	return (i);
 }
 
-static void
-set_gids(char *gids)
+static void set_gids(char *gids)
 {
 	gid_t *gidset;
 	long ngroups;
@@ -540,8 +461,7 @@ set_gids(char *gids)
 	free(gidset);
 }
 
-int
-main(int argc, char *argv[])
+int main(int argc, char *argv[])
 {
 	struct syscall_desc *scall;
 	unsigned int n;
@@ -621,8 +541,7 @@ main(int argc, char *argv[])
 	exit(0);
 }
 
-static const char *
-err2str(int error)
+static const char *err2str(int error)
 {
 	static char errnum[8];
 
