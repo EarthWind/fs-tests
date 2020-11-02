@@ -1,6 +1,6 @@
 #!/bin/sh
 
-desc="chmod returns ENOTDIR if a component of the path prefix is not a directory"
+desc="start running ${0}.........."
 
 dir=`dirname $0`
 . ${dir}/../misc.sh

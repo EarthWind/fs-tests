@@ -1,6 +1,6 @@
 #!/bin/sh
 
-desc="chmod returns EPERM if the operation would change the ownership, but the effective user ID is not the super-user"
+desc="start running ${0}.........."
 
 dir=`dirname $0`
 . ${dir}/../misc.sh

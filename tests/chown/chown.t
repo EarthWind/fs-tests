@@ -1,6 +1,6 @@
 #!/bin/sh
 
-desc="chown changes ownership"
+desc="start running ${0}.........."
 
 dir=`dirname $0`
 . ${dir}/../misc.sh

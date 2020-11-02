@@ -1,6 +1,6 @@
 #!/bin/sh
 
-desc="chmod returns ENAMETOOLONG if an entire path name exceeded 1023 characters"
+desc="start running ${0}.........."
 
 dir=`dirname $0`
 . ${dir}/../misc.sh
