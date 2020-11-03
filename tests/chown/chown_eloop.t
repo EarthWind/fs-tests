@@ -1,10 +1,10 @@
 #!/bin/sh
 
 desc="start running ${0}.........."
+echo $desc
 
 dir=`dirname $0`
 . ${dir}/../misc.sh
-
 n0=`namegen`
 n1=`namegen`
 

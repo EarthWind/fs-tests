@@ -1,6 +1,6 @@
 #!/bin/sh
 
-desc="open returns EFAULT if the path argument points outside the process's allocated address space"
+desc="start running ${0}.........."
 
 dir=`dirname $0`
 . ${dir}/../misc.sh

@@ -1,6 +1,7 @@
 #!/bin/sh
 
-desc="link returns EACCES when the requested link requires writing in a directory with a mode that denies write permission"
+desc="start running ${0}.........."
+echo $desc
 
 dir=`dirname $0`
 . ${dir}/../misc.sh

@@ -1,6 +1,6 @@
 #!/bin/sh
 
-desc="mkfifo returns EACCES when write permission is denied on the parent directory of the file to be created"
+desc="start running ${0}.........."
 
 dir=`dirname $0`
 . ${dir}/../misc.sh

@@ -1,6 +1,7 @@
 #!/bin/sh
 
-desc="link returns ENAMETOOLONG if a component of either pathname exceeded 255 characters"
+desc="start running ${0}.........."
+echo $desc
 
 dir=`dirname $0`
 . ${dir}/../misc.sh

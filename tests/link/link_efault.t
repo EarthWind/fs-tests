@@ -1,6 +1,7 @@
 #!/bin/sh
 
-desc="link returns EFAULT if one of the pathnames specified is outside the process's allocated address space"
+desc="start running ${0}.........."
+echo $desc
 
 dir=`dirname $0`
 . ${dir}/../misc.sh

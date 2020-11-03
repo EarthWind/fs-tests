@@ -1,6 +1,6 @@
 #!/bin/sh
 
-desc="mkfifo returns ELOOP if too many symbolic links were encountered in translating the pathname"
+desc="start running ${0}.........."
 
 dir=`dirname $0`
 . ${dir}/../misc.sh

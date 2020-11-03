@@ -1,6 +1,7 @@
 #!/bin/sh
 
-desc="link returns ELOOP if too many symbolic links were encountered in translating one of the pathnames"
+desc="start running ${0}.........."
+echo $desc
 
 dir=`dirname $0`
 . ${dir}/../misc.sh

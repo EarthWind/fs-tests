@@ -1,6 +1,6 @@
 #!/bin/sh
 
-desc="open returns EMLINK/ELOOP when O_NOFOLLOW was specified and the target is a symbolic link"
+desc="start running ${0}.........."
 
 dir=`dirname $0`
 . ${dir}/../misc.sh

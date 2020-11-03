@@ -1,6 +1,6 @@
 #!/bin/sh
 
-desc="open opens (and eventually creates) a file"
+desc="start running ${0}.........."
 
 dir=`dirname $0`
 . ${dir}/../misc.sh

@@ -1,6 +1,7 @@
 #!/bin/sh
 
-desc="link creates hardlinks"
+desc="start running ${0}.........."
+echo $desc
 
 dir=`dirname $0`
 . ${dir}/../misc.sh

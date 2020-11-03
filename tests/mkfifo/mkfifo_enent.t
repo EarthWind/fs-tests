@@ -1,6 +1,6 @@
 #!/bin/sh
 
-desc="mkfifo returns ENOENT if a component of the path prefix does not exist"
+desc="start running ${0}.........."
 
 dir=`dirname $0`
 . ${dir}/../misc.sh

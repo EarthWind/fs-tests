@@ -1,6 +1,7 @@
 #!/bin/sh
 
-desc="link returns EPERM if the source file is a directory"
+desc="start running ${0}.........."
+echo $desc
 
 dir=`dirname $0`
 . ${dir}/../misc.sh

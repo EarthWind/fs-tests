@@ -1,6 +1,7 @@
 #!/bin/sh
 
-desc="link returns ENAMETOOLONG if an entire length of either path name exceeded 1023 characters"
+desc="start running ${0}.........."
+echo $desc
 
 dir=`dirname $0`
 . ${dir}/../misc.sh

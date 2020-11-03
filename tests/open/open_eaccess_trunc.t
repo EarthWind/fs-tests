@@ -1,6 +1,6 @@
 #!/bin/sh
 
-desc="open returns EACCES when O_TRUNC is specified and write permission is denied"
+desc="start running ${0}.........."
 
 dir=`dirname $0`
 . ${dir}/../misc.sh

@@ -1,5 +1,7 @@
 #!/bin/sh
-desc="link returns EACCES when a component of either path prefix denies search permission"
+
+desc="start running ${0}.........."
+echo $desc
 
 dir=`dirname $0`
 . ${dir}/../misc.sh

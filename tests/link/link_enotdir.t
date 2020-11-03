@@ -1,6 +1,7 @@
 #!/bin/sh
 
-desc="link returns ENOTDIR if a component of either path prefix is not a directory"
+desc="start running ${0}.........."
+echo $desc
 
 dir=`dirname $0`
 . ${dir}/../misc.sh

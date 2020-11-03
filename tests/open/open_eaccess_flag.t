@@ -1,6 +1,6 @@
 #!/bin/sh
 
-desc="open returns EACCES when the required permissions (for reading and/or writing) are denied for the given flags"
+desc="start running ${0}.........."
 
 dir=`dirname $0`
 . ${dir}/../misc.sh

@@ -1,6 +1,6 @@
 #!/bin/sh
 
-desc="open returns EEXIST when O_CREAT and O_EXCL were specified and the file exists"
+desc="start running ${0}.........."
 
 dir=`dirname $0`
 . ${dir}/../misc.sh

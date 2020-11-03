@@ -1,6 +1,6 @@
 #!/bin/sh
 
-desc="open returns EACCES when search permission is denied for a component of the path prefix"
+desc="start running ${0}.........."
 
 dir=`dirname $0`
 . ${dir}/../misc.sh

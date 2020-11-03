@@ -1,6 +1,7 @@
 #!/bin/sh
 
-desc="link returns ENOENT if a component of either path prefix does not exist"
+desc="start running ${0}.........."
+echo $desc
 
 dir=`dirname $0`
 . ${dir}/../misc.sh

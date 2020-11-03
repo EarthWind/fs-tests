@@ -1,6 +1,7 @@
 #!/bin/sh
 
-desc="link returns EEXIST if the destination file does exist"
+desc="start running ${0}.........."
+echo $desc
 
 dir=`dirname $0`
 . ${dir}/../misc.sh

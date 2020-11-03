@@ -1,6 +1,6 @@
 #!/bin/sh
 
-desc="mkdir returns EEXIST if the named file exists"
+desc="start running ${0}.........."
 
 dir=`dirname $0`
 . ${dir}/../misc.sh
